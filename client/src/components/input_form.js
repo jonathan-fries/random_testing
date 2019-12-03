@@ -19,6 +19,11 @@ export default class InputForm extends React.Component {
     event.preventDefault();
     event.stopPropagation();
   }
+  else{
+    var minimum = form.elements.minimum.value;
+    var maximum = form.elements.maximum.value;
+    var iterations = form.elements.iterations.value;
+  }
 
   this.setState({validated:true});
 }
@@ -35,6 +40,7 @@ render() {
           <Form.Control
             required
             type="text"
+            name="minimum"
             placeholder="Min"
             defaultValue="1"
           />
@@ -45,6 +51,7 @@ render() {
           <Form.Control
             required
             type="text"
+            name="maximum"
             placeholder="Max Value"
             defaultValue="10"
           />
@@ -55,6 +62,7 @@ render() {
           <Form.Control
             required
             type="text"
+            name="iterations"
             placeholder="Iterations"
             defaultValue="10"
           />
