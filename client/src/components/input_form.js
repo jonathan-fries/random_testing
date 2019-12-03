@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/form';
 import Button from 'react-bootstrap/button';
 import {Col} from 'react-bootstrap';
+import {localRandom} from './shared/local_random';
 
 export default class InputForm extends React.Component {
 
@@ -15,6 +16,7 @@ export default class InputForm extends React.Component {
 
   handleSubmit(key, evt){
   const form = event.currentTarget;
+  var randoms;
   if (form.checkValidity() === false) {
     event.preventDefault();
     event.stopPropagation();
@@ -23,6 +25,7 @@ export default class InputForm extends React.Component {
     var minimum = form.elements.minimum.value;
     var maximum = form.elements.maximum.value;
     var iterations = form.elements.iterations.value;
+    randoms = localRandom(minimum, maximum, iterations);
   }
 
   this.setState({validated:true});
