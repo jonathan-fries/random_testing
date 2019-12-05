@@ -2,6 +2,8 @@ import React from 'react';
 import Form from 'react-bootstrap/form';
 import Button from 'react-bootstrap/button';
 import {Col} from 'react-bootstrap';
+import {localRandom} from './shared/local_random';
+import {randomDotOrgRandom} from './shared/random_dot_org_random';
 
 export default class InputForm extends React.Component {
 
@@ -15,12 +17,22 @@ export default class InputForm extends React.Component {
 
   handleSubmit(key, evt){
   const form = event.currentTarget;
+  var randoms;
+  var randomsDotOrg;
   if (form.checkValidity() === false) {
     event.preventDefault();
     event.stopPropagation();
   }
-
+  else{
+    var minimum = form.elements.minimum.value;
+    var maximum = form.elements.maximum.value;
+    var iterations = form.elements.iterations.value;
+    randoms = localRandom(minimum, maximum, iterations);
+    randomsDotOrg = randomDotOrgRandom(minimum, maximum, iterations);
+  }
   this.setState({validated:true});
+  event.preventDefault();
+  return false;
 }
 
 render() {
@@ -35,6 +47,7 @@ render() {
           <Form.Control
             required
             type="text"
+            name="minimum"
             placeholder="Min"
             defaultValue="1"
           />
@@ -45,6 +58,7 @@ render() {
           <Form.Control
             required
             type="text"
+            name="maximum"
             placeholder="Max Value"
             defaultValue="10"
           />
@@ -55,6 +69,7 @@ render() {
           <Form.Control
             required
             type="text"
+            name="iterations"
             placeholder="Iterations"
             defaultValue="10"
           />
