@@ -9,3 +9,6 @@ It can test Math.Random() in the browser and it can use Random.org.  In order to
 
 To supply your own license, make a copy of the file called random_license_template.js.  Rename it to random_license.js, and paste your license from Random.org into the file.
 
+It does not currently have a UI to view the results, which means  you can only see them by pausing the code in the browser.
+
+Not terribly functional, but I am working on it.
